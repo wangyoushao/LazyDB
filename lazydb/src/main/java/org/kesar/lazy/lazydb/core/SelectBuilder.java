@@ -76,7 +76,7 @@ public class SelectBuilder<T> {
         Cursor cursor = executor.rawQuery(sql, null);
         if (cursor != null) {
             try {
-                if (cursor.moveToNext()) {
+                if (cursor.moveToNext()) {//cursor初始位置是在-1,而数据是从0开始的，所以cursor.moveToNext刚好是从-1变成0，不需要moveToFirst而是直接循环moveToNext就可以完成遍历。
                     if (cursor.getInt(0) == 0) {
                         return null;
                     }

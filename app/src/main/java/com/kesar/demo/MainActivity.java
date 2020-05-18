@@ -30,6 +30,34 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
+
+//--------------------------------------------------------------------------------------------------
+
+
+    //问题1：查询出来的Cursor 如何转化成 对象Bean ？
+    //通过类的反射newInstance()一个对象。Cursor能获取列的名字也即是Class的属性名，通过反射根据属性名可以获取属性的类型。
+    //Cursor根据属性的类型可以获取这列的值（也即是属性的值）。通过Field的set(Object object, Object value)将
+    //值设置给newInstance对象。依次遍历Cursor的各列，给对象属性赋值。最后对象就是Bean。
+
+
+//--------------------------------------------------------------------------------------------------
+
+    //问题2：泛型如何起作用？
+
+
+//--------------------------------------------------------------------------------------------------
+
+    //问题3：如何将一个对象 转化成查询语句？
+    //通过反射拿到对象的类的属性集合。遍历后拿到值，塞进ContentValues。
+
+
+//--------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
+
+
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
     @BindView(R.id.recyclerView)
@@ -55,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
             switch (requestCode) {
                 case AddTagActivity.REQUEST_CODE: {
                     Tag tag = (Tag) data.getSerializableExtra(Tag.class.getName());
-                    mAdapter.addItemAndRefresh(0,tag);
+                    mAdapter.addItemAndRefresh(0, tag);
                     break;
                 }
                 case EditTagActivity.REQUEST_CODE: {
@@ -114,24 +142,22 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @OnClick({R.id.tvNewTag,R.id.tvMenu})
+    @OnClick({R.id.tvNewTag, R.id.tvMenu})
     public void onClick(final View view) {
-        switch (view.getId()){
-            case R.id.tvNewTag:
-            {
+        switch (view.getId()) {
+            case R.id.tvNewTag: {
                 startActivityForResult(new Intent(getApplicationContext(), AddTagActivity.class), AddTagActivity.REQUEST_CODE);
                 break;
             }
-            case R.id.tvMenu:
-            {
-                List<String> items=new ArrayList<>();
+            case R.id.tvMenu: {
+                List<String> items = new ArrayList<>();
                 items.add("我的收藏");
                 items.add("设置");
                 new AlertDialog.Builder(MainActivity.this)
                         .setSingleChoiceItems(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items), -1, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                switch (which){
+                                switch (which) {
                                     case 0:// TODO: 16-11-10 跳转到收藏界面
                                     {
 

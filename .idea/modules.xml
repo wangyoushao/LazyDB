@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/LazyDB.iml" filepath="$PROJECT_DIR$/LazyDB.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/LazyDB-app.iml" filepath="$PROJECT_DIR$/app/LazyDB-app.iml" group="LazyDB/app" />
+      <module fileurl="file://$PROJECT_DIR$/lazydb/LazyDB-lazydb.iml" filepath="$PROJECT_DIR$/lazydb/LazyDB-lazydb.iml" group="LazyDB/lazydb" />
+      <module fileurl="file://$PROJECT_DIR$/adrcode-LazyDB.iml" filepath="$PROJECT_DIR$/adrcode-LazyDB.iml" group="LazyDB" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/lazydb/lazydb.iml" filepath="$PROJECT_DIR$/lazydb/lazydb.iml" />
     </modules>

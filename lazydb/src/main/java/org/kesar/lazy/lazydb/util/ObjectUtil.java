@@ -35,16 +35,16 @@ public final class ObjectUtil {
                 continue;
             }
             String columnName = cursor.getColumnName(i);
-            Field field = ReflectUtil.getDeclaredField(objectClass, columnName);
+            Field field = ReflectUtil.getDeclaredField(objectClass, columnName);//列名字==类属性名字
             if (field == null) {
                 continue;
             }
-            Class fieldClass = field.getType();
+            Class fieldClass = field.getType();//获取列的类型
             if (!field.isAccessible()) {
                 field.setAccessible(true);
             }
             if (fieldClass == String.class) {
-                field.set(object, cursor.getString(i));
+                field.set(object, cursor.getString(i));//根据类型获取当前列的值
             } else if (fieldClass == double.class
                     || fieldClass == Double.class) {
                 field.set(object, cursor.getDouble(i));
